@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { toast } from 'react-hot-toast';
 import { db } from '../data/db';
 
@@ -52,15 +52,19 @@ export const userCart = () => {
         updateArr[index].quantity == 0 ? deleteFromCart(idGuitar) : setDataCart(updateArr);
     }
 
+    const isEmpty = useMemo(() => dataCart.length == 0, [dataCart]);    
+    const cartTotal = useMemo(() => dataCart.reduce((sum, guitar) => sum + (guitar.price * guitar.quantity), 0), [dataCart]);
 
     return {
         addToCart,        
+        cartTotal,
         clearCart,
-        dataPage,
         dataCart,
+        dataPage,
         decreseQuantity,
         deleteFromCart,
         increseQuantity,
+        isEmpty
     }
 }
 

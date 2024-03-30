@@ -1,8 +1,4 @@
-import { useMemo } from "react";
-
-const Header = ({ selectedGuitars, updateDataCart, increseQuantity, decreseQuantity, clearCart }) => {
-    const isEmpty = useMemo(() => selectedGuitars.length == 0, [selectedGuitars]);    
-    const cartTotal = useMemo(() => selectedGuitars.reduce((sum, guitar) => sum + (guitar.price * guitar.quantity), 0), [selectedGuitars]);
+const Header = ({ selectedGuitars, updateDataCart, increseQuantity, decreseQuantity, clearCart, isEmpty, cartTotal }) => {
 
     return (
         <>
