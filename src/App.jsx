@@ -1,61 +1,21 @@
-import { useEffect, useState } from 'react'
-import { toast, Toaster } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 
 import Header from './components/Header'
 import Guitar from './components/Guitar'
 import Footer from './components/Footer'
-import { db } from './data/db'
+import { userCart } from './hooks/useCart';
 
 function App() {     
-  const [data] = useState(db);
-  const notify = () => toast.success('Agregado a tu carrito.');
-
-  const initialStateDataCart = () => {
-    const dataLS = localStorage.getItem('products');
-    return dataLS ? JSON.parse(dataLS) : [];
-  };
-  
-  const [dataCart, setDataCart] = useState(initialStateDataCart);
-
-  useEffect(() => {
-    localStorage.setItem('products', JSON.stringify(dataCart));
-  }, [dataCart])
-  
-
-  function clearCart(){
-    setDataCart([]);
-  }
-
-  const deleteFromCart = (idGuitar) => {    
-    setDataCart( prevState => prevState.filter(guitar => guitar.id != idGuitar));
-  }
-   
-  const addToCart = (newGuitar) => {
-    notify();
-    const indexGuitar = dataCart.findIndex(guitar => guitar.id == newGuitar.id);
+  const {
+    addToCart,
+    dataPage,
+    dataCart,
+    clearCart,
+    increseQuantity,
+    decreseQuantity,
+    deleteFromCart
+  } = userCart();
     
-    if(indexGuitar == -1){
-      newGuitar.quantity = 1;
-      setDataCart([...dataCart, newGuitar] );
-    }else{
-      increseQuantity(indexGuitar);
-    }        
-  }
-
-  function increseQuantity(index){
-    const updateArr = [...dataCart];
-    updateArr[index].quantity++; 
-    setDataCart(updateArr);
-  }
-  
-  function decreseQuantity(idGuitar){
-    const index = dataCart.findIndex(guitar => guitar.id == idGuitar);    
-    
-    const updateArr = [...dataCart];    
-    updateArr[index].quantity--;
-    updateArr[index].quantity == 0 ? deleteFromCart(idGuitar) : setDataCart(updateArr);
-  }
-
   return (
     <>
       <Header
@@ -70,7 +30,7 @@ function App() {
         <h2 className="text-center">Nuestra Colección</h2>        
         <div className="row mt-5">
           { 
-            data.map((guitar, index) => {
+            dataPage.map((guitar, index) => {
               return <Guitar
                 key={index}
                 data={guitar}                                
