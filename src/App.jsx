@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { toast, Toaster } from 'react-hot-toast';
 
 import Header from './components/Header'
@@ -6,10 +6,21 @@ import Guitar from './components/Guitar'
 import Footer from './components/Footer'
 import { db } from './data/db'
 
-function App() { 
-  const [data, setData] = useState(db);
-  const [dataCart, setDataCart] = useState([]);
+function App() {     
+  const [data] = useState(db);
   const notify = () => toast.success('Agregado a tu carrito.');
+
+  const initialStateDataCart = () => {
+    const dataLS = localStorage.getItem('products');
+    return dataLS ? JSON.parse(dataLS) : [];
+  };
+  
+  const [dataCart, setDataCart] = useState(initialStateDataCart);
+
+  useEffect(() => {
+    localStorage.setItem('products', JSON.stringify(dataCart));
+  }, [dataCart])
+  
 
   function clearCart(){
     setDataCart([]);
@@ -28,7 +39,7 @@ function App() {
       setDataCart([...dataCart, newGuitar] );
     }else{
       increseQuantity(indexGuitar);
-    }
+    }        
   }
 
   function increseQuantity(index){
@@ -37,7 +48,6 @@ function App() {
     setDataCart(updateArr);
   }
   
-
   function decreseQuantity(idGuitar){
     const index = dataCart.findIndex(guitar => guitar.id == idGuitar);    
     
