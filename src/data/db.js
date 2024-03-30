@@ -4,7 +4,7 @@ export const db = [
         name: 'Lukather',
         image: 'guitarra_01',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 299,
+        price: 300,
         quantity: 0
     },
     {
@@ -12,7 +12,7 @@ export const db = [
         name: 'SRV',
         image: 'guitarra_02',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 349,
+        price: 350,
         quantity: 0
     },
     {
@@ -20,7 +20,7 @@ export const db = [
         name: 'Borland',
         image: 'guitarra_03',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 329,
+        price: 330,
         quantity: 0
     },
     {
@@ -28,7 +28,7 @@ export const db = [
         name: 'VAI',
         image: 'guitarra_04',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 299,
+        price: 150,
         quantity: 0
     },
     {
@@ -36,7 +36,7 @@ export const db = [
         name: 'Thompson',
         image: 'guitarra_05',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 399,
+        price: 400,
         quantity: 0
     },
     {
@@ -44,7 +44,7 @@ export const db = [
         name: 'White',
         image: 'guitarra_06',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 329,
+        price: 310,
         quantity: 0
     },
     {
@@ -52,7 +52,7 @@ export const db = [
         name: 'Cobain',
         image: 'guitarra_07',
         description: 'Morbi ornare augue nisl, vel elementum dui mollis vel. Curabitur non ex id eros fermentum hendrerit.',
-        price: 349,
+        price: 500,
         quantity: 0
     },
     {
